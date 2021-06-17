@@ -7,14 +7,39 @@
     <title>Document</title>
     <script>
     function init() {
-        var cols = document.getElementsByClassName("col");
-        for(var i=0;i<cols.length;i++)
+        var cols = Array.from(document.getElementsByClassName("col"));
+        // cols.splice(4, 1); // 4번째 제거
+        var cnt = cols.length;
+        for(var i=0; i<cnt; i++)
         {
-            cols[i].innerHTML = i+1;   
+            var r = Math.floor(Math.random()*(25-i));
+            console.log(r);
+            cols[r].innerHTML = i+1;
+            
+            cols.splice(r, 1);
+            console.log("length", cols.length);
         }
-        var r = Math.floor(Math.random()*25)+1;
-        alert(r);
+        // console.log(cols.length);
+
+        // for(var i=0;i<cols.length;i++)
+        // {
+        //     cols[i].innerHTML = i+1;   
+        //     console.log(i, cols[i].innerText);
+        // }
+
+        // for(var i=0;i<cols.length;i++)
+        // {
+        //     console.log(i, cols[i].innerText);
+        // }
+
+        // console.log(cols.length);
+
+        // var r = Math.floor(Math.random()*25)+1;
+    
+    //     alert(r);
+    // // cols 에 임이의 숫자 넣기(중복X)
     }
+
     </script>
     <style>
         .col {
