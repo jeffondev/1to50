@@ -7,22 +7,12 @@
     <title>Document</title>
     <script>
         var t1;
-        function init(){
-            setInterval(function() {
-                var nowTime = new Date();
-
-                var hh = nowTime.getHours();
-                var min = nowTime.getMinutes();
-                var sec = nowTime.getSeconds();
-
-                document.getElementById('hh').textContent = hh;
-                document.getElementById('mm').textContent = min;
-                document.getElementById('ss').textContent = sec;
-            }, 1000)
-        }
+        
+        var timer;
         function startTimer() {
             t1 = new Date();
-            setInterval(function() {
+
+            timer = setInterval(function() {
                 var t2 = new Date();
                 var t = t2.getTime() - t1.getTime();
                 t = t / 1000;
@@ -34,6 +24,9 @@
                 // document.getElementById('s2').textContent = sec;
                 document.getElementById('tt').textContent = t;
             }, 1)
+        }
+        function stopTimer() {
+            clearInterval(timer);
         }
     </script>
 </head>
@@ -48,6 +41,7 @@
     </span>
 
     <button onclick="startTimer();">start</button>
+    <button onclick="stopTimer();">stop</button>
 
     <span>
         <span id="hh"></span>

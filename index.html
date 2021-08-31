@@ -36,12 +36,37 @@
                     targetNum++;
                 }
 
-             });
-         }
-        
-        
-    }
+                if(targetNum > 50)
+                {
+                  stopTimer();
+                }
 
+             });
+        }  
+    }
+    function start() {
+        var gamePane = document.getElementById("box");
+        gamePane.style.visibility = "visible";
+        var welcomePane = document.getElementById("welcome");
+        welcomePane.style.visibility = "hidden";
+        startTimer();
+    }
+    var t1;
+        
+      var timer;
+      function startTimer() {
+        t1 = new Date();
+
+        timer = setInterval(function() {
+          var t2 = new Date();
+          var t = t2.getTime() - t1.getTime();
+          t = t / 1000;
+          document.getElementById('tt').textContent = t;
+        }, 1)
+      }
+      function stopTimer() {
+        clearInterval(timer);
+      }
     </script>
     <style>
     * {
@@ -79,26 +104,40 @@
       border-width: 5px;
       border-radius: 10px;
     }
+    .box {
+      visibility: hidden;
+    }
+    #welcome {
+      visibility: visible;
+    } 
     </style>
 </head>
 <body onload="init();">
-
-    <div class="box">
-        <div class="row">
-          <div class="col"></div><div class="col"></div><div class="col"></div><div class="col"></div><div class="col"></div>
-        </div>
-        <div class="row">
-          <div class="col"></div><div class="col"></div><div class="col"></div><div class="col"></div><div class="col"></div>
-        </div>
-        <div class="row">
-          <div class="col"></div><div class="col"></div><div class="col"></div><div class="col"></div><div class="col"></div>
-        </div>
-        <div class="row">
-          <div class="col"></div><div class="col"></div><div class="col"></div><div class="col"></div><div class="col"></div>
-        </div>
-        <div class="row">
-          <div class="col"></div><div class="col"></div><div class="col"></div><div class="col"></div><div class="col"></div>
-        </div>
+  <div id="box" class="box">
+    <span>
+      <span id="tt"></span>
+    </span>
+  
+      <div class="row">
+      <div class="col"></div><div class="col"></div><div class="col"></div><div class="col"></div><div class="col"></div>
     </div>
+    <div class="row">
+      <div class="col"></div><div class="col"></div><div class="col"></div><div class="col"></div><div class="col"></div>
+    </div>
+    <div class="row">
+      <div class="col"></div><div class="col"></div><div class="col"></div><div class="col"></div><div class="col"></div>
+    </div>
+    <div class="row">
+      <div class="col"></div><div class="col"></div><div class="col"></div><div class="col"></div><div class="col"></div>
+    </div>
+    <div class="row">
+      <div class="col"></div><div class="col"></div><div class="col"></div><div class="col"></div><div class="col"></div>
+    </div>
+  </div>
+
+  <div id="welcome">
+    <button onclick="start();">게임 시작</button>
+  </div>
+
 </body>
 </html>
