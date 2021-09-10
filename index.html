@@ -7,6 +7,7 @@
     <title>Document</title>
     <script>
     function init() {
+        showScore();
         var targetNum = 1; 
         var cols = document.getElementsByClassName("col");
         var nums = Array.from({length: 25}, (v, i) => i+1); // [1..25]
@@ -51,22 +52,39 @@
         welcomePane.style.visibility = "hidden";
         startTimer();
     }
-    var t1;
-        
-      var timer;
-      function startTimer() {
-        t1 = new Date();
-
-        timer = setInterval(function() {
-          var t2 = new Date();
-          var t = t2.getTime() - t1.getTime();
-          t = t / 1000;
-          document.getElementById('tt').textContent = t;
-        }, 1)
+     
+    function showScore() {
+      var scores = [
+        {name: "jeffrey", score: 20.777},
+        {name: "humphrey", score: 20.778},
+        {name: "ariana", score: 77.777}
+      ];
+      var p = document.getElementById('scores');
+      for(var i=0;i<scores.length;i++)
+      {
+        var c = document.createElement('li');
+        c.textContent = scores[i].name + "   " +scores[i].score;
+        p.appendChild(c);
+        console.log(scores[i].name + "   " +scores[i].score);
       }
-      function stopTimer() {
+    }
+
+    var t1;
+    var timer;
+    function startTimer() {
+      t1 = new Date();
+
+      timer = setInterval(function() {
+        var t2 = new Date();
+        var t = t2.getTime() - t1.getTime();
+        t = t / 1000;
+        document.getElementById('tt').textContent = t;
+      }, 1)
+    }
+    function stopTimer() {
         clearInterval(timer);
       }
+    
     </script>
     <style>
     * {
@@ -166,9 +184,9 @@
       <spam id="welcomeContent">
         <button id="startbutton" onclick="start();">게임 시작</button>
         <div>
-          jeffrey<br>
-          humphrey<br>
-          ariana<br>
+          <ol id="scores">
+            
+          </ol>
         </div>
       </spam>  
     </div>  
